@@ -1,49 +1,24 @@
 from modulepalgad1 import *
 
-#1
 
-palgad = [1200, 2500, 750, 395, 1200]
-inimesed = ["A", "B", "C", "D", "E"]
-print("Nimi   : Palk:  ")
-for inimene, palk in zip(inimesed,palgad):
-   print(f"{inimene}  : {palk}")
-lisa_andmed=int(input("Mitu inimest soovite lisada? "))
-for _ in range(lisa_andmed):
-   lisa_andmed.lisa_inimene_ja_palk(inimesed, palgad)
-print("\nUuendatud andmed:")
-print("Nimi   : Palk:  ")
-for inimene, palk in zip(inimesed, palgad):
-   print(f"{inimene}   : {palk}")
+palgad=[1200,2500,750,395,1200]
+inimesed=["A","B","C","D","E"]
 
-# #2
-# palgad = [1200, 2500, 750, 395, 1200]
-# inimesed = ["A", "B", "C", "D", "E"]
-
-# suurim_inimene, suurim = palgad_moodul.suurim_palk(inimesed, palgad)
-
-# if suurim_inimene is not None:
-#    print(f"Suurim palk on {suurim} ja seda teenib {suurim_inimene}.")
-
-# 4-------------------------------------
-# palgad = [1200, 2500, 750, 395, 1200]
-# inimesed = ["A", "B", "C", "D", "E"]
-
-# min_palk, saaja = palgad_moodul.vaikseim_palk(inimesed, palgad)
-
-# print(f"Vaikseim palk on {min_palk} ja selle saaja on {saaja}.")
-
-
-# 6--------------------------------------
-# palgad = [1200, 2500, 750, 395, 1200, 750, 2500]
-# inimesed = ["A", "B", "C", "D", "E", "F", "G"]
-
-# print("Inimesed, kellel on sama palk:")
-# palgad_moodul.inimesed_sama_palgaga(inimesed, palgad)
-
-# 7---------------------------------
-# palgad = [1200, 2500, 750, 395, 1200, 750, 2500]
-# inimesed = ["A", "B", "C", "B", "D", "E", "F"]
-
-# otsitav_nimi = "B"
-
-# palgad_moodul.otsi_palk_nime_jargi(inimesed, palgad, otsitav_nimi)
+while True:
+    print("0-Andmed ekraanile\n1-Andmete lisamine\n2-Andmete kustutamine\n3-Naitab suurima palka\n4-Naitab vaiksema palka\n5-Sorteerib")
+    vastus=int(input())
+    if vastus==0:
+        naita_andmed(inimesed,palgad)
+    elif vastus==1:
+        inimesed,palgad=andmete_lisamine(inimesed,palgad)
+    elif vastus==2:
+        inimesed,palgad=andmete_kustutamine(inimesed,palgad)
+    elif vastus==3:
+        rikkad_inimesed=suurim_palk(inimesed,palgad)
+        print(rikkad_inimesed)
+    elif vastus==4:
+        poor_inimesed=vaiksem_palk(inimesed,palgad)
+        print(poor_inimesed)
+    elif vastus==5:
+        inimesed,palgad=sorteerinime(inimesed,palgad)
+        

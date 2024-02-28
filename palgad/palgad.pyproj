@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>37219fb6-b765-4512-a9f6-a3feabc13cac</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>modulepalgad1.py</StartupFile>
+    <StartupFile>palgad.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
