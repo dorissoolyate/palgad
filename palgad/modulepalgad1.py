@@ -66,3 +66,77 @@ def sorteerinime(i:list,p:list)->any:
                 p[n],p[m]==p[m],p[n]
                 i[n],i[m]==i[m],i[n]
     return i,p
+def vornde_palk(i:list,p:list)->any:
+    """Teada saada, kes saavad võrdset palka
+    """
+    if len(p)<2:
+        print("Ei nae kes saavad võrdset palka")
+    vornde_palk={}
+    for i, p in zip(i,p):
+        if p in vornde_palk:
+            vornde_palk[p].append(i)
+        else:
+            vornde_palk[p]=[i]
+    for p, persons in vornde_palk.items():
+        if len(persons)>1:
+            print(f"Palk {p}: {', '.join(i)}")
+    return i,p 
+def palgaotsing(i:list,p:list)->any:
+    """Otsib palka nime jargi
+    """
+    nimi=input("Kelle palka otsime?")
+    if nimi in i:
+        index = i.index(nimi)
+        print(f"{nimi} palk on {p[index]}.")
+    else:
+        print("Nimi ei ole leitud")
+    return i,p    
+def filtreerimine(i:list,p:list)->any:
+    """Väljundab nimekirja inimestest (koos palgaga), kes saavad rohkem/vähem kui määratud summa
+    """
+    tingimus=input("Maara palga summa: ")
+    if tingimus=="suurem":
+        filtreeritud=[(i,p) for i,p in zip(i,p) if p>tingimus]
+    elif tingimus == "vaiksem":
+        filtreeritud = [(i,p) for i,p in zip(i,p) if p<tingimus]
+    else:
+        print("viga")    
+    if filtreeritud:
+        [print(f"{i}: {p}") for i,p in filtreeritud]
+    else:
+        print("Ei ole leitud")
+    return i,p
+def vaeseima_rikkamad(i:list,p:list)->any:
+    """ T vaeseimad ja rikkamad inimesed
+    """
+    if i and p:
+        sorted_data=sorted(zip(i,p), key=lambda x: x[1])
+        print("Top vaesemaid:")
+        for i,p in sorted_data[:3]:
+            print(f"{i}: {p}")
+        
+        print("Top rikkamaid:")
+        for i,p in sorted_data[-3:]:
+            print(f"{i}: {p}")
+    else:
+        print("viga.")
+    return i,p
+def keskmine_palk(i:list,p:list)->any:
+    """Keskmine palk ja selle saaja nimi/nimed
+    """
+    if p:
+        keskmine=sum(p)/len(p)
+        ala_kesk=[i for i,p in zip(i,p) if p>keskmine]
+        inimene_kesk=[i for i,p in zip(i,p) if p==keskmine]
+        print(f"Keskmine palk: {keskmine}")
+        if ala_kesk:
+            print("Keskmisest suurem:", ', '.join(ala_kesk))
+        else:
+            print("Ei ole sellist")
+        if inimene_kesk:
+            print("Inimene keskmise palgaga:", ', '.join(inimene_kesk))
+        else:
+            print("Ei ole sellist.")
+    else:
+        print("Viga")
+    return i,p    
